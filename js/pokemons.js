@@ -3479,29 +3479,35 @@ var pokemons = [
 
 
 
-// var elForm = document.querySelector('.js-form');
 var elText = document.querySelector('.js-text');
 var elList = document.querySelector('.js-list');
-
-// var nom = []
-
-// elForm.addEventListener('submit', function(evt){
-//     evt.preventDefault()
-
-// for(item of elInput.value.split(",") ){
-//     var elitem = document.createElement('li')
-
-//     elitem.textContent = item;
-
-//     elList.appendChild(elitem)
-// }
-
-// // console.log(elInput.value.split(","));
+var elSelect = document.querySelector('.js-select');
 
 
-// })
 
 for (item of pokemons) {
+
+	var setteng = []
+
+	item.type.forEach(function(el,indext){
+		setteng.push(el);
+
+		var setng = new Set(setteng);
+
+
+		var newse = []
+
+		for(i of setng){
+			newse.push(i)
+		}
+		
+	})
+		
+	
+	  
+
+	
+	
 
 	var newArres = document.createElement('li');
 
@@ -3514,19 +3520,17 @@ for (item of pokemons) {
 
 	newArres.classList.add('col-md-4')
 	newArres.classList.add('col-sm-5')
-	// newArres.classList.add('col-3')
-	// newArres.classList.add('col-3')
+
 	newArres.classList.add('p-5')
 	newArres.classList.add('mb-5')
 	newArres.classList.add('ms-1')
 	newArres.classList.add('border')
 	newArres.classList.add('border-dark')
 	newArres.classList.add('hover')
-	// newArres.setAttribute('class','hover')
 
 
 
-	// newArres.classList.add('list-group-item') hover-focus border border-2 border-dark rounded
+
 
 
 	var id = document.createElement('h2');
@@ -3543,13 +3547,14 @@ for (item of pokemons) {
 
 	var nam = document.createElement('a')
 	nam.textContent = item.type
+
+	// var sellekt = new Set(item.type)
+
 	
-	// var taype = document.createElement('input')
-	// nam.value = item.type
 
-
-
-
+	// console.log(item.type);
+	
+	
 
 	newArres.appendChild(id)
 	newArres.appendChild(img)
@@ -3563,18 +3568,115 @@ for (item of pokemons) {
 
 	elList.appendChild(newArres)
 }
-for (items of newArres) {
-
-}
 
 
 
-
-console.log(elList);
-// ${item.type},${item.height},${item.egg},${item.egg}
-// 
+	
+// var set = new Set()
 
 
-    // elList.textConten/t = nom.split("elInput.value")
 
-// })
+newarreys = []
+
+elSelect.addEventListener('change',function(){
+	newarreys = []
+	elList.innerHTML = []
+
+
+		
+
+	pokemons.forEach((poc)=>{
+
+
+		if(poc.type.includes(elSelect.value)){
+			newarreys.push(poc)
+		}
+		
+	})
+
+
+	for (item of newarreys) {
+
+		var newArres = document.createElement('li');
+	
+		newArres.classList.add('card')
+		newArres.classList.add('d-flex')
+		// newArres.classList.add('w-25')
+		newArres.classList.add('text-center')
+		newArres.classList.add('bg-info')
+		newArres.classList.add('col-lg-3')
+	
+		newArres.classList.add('col-md-4')
+		newArres.classList.add('col-sm-5')
+	
+		newArres.classList.add('p-5')
+		newArres.classList.add('mb-5')
+		newArres.classList.add('ms-1')
+		newArres.classList.add('border')
+		newArres.classList.add('border-dark')
+		newArres.classList.add('hover')
+	
+	
+	
+	
+	
+	
+		var id = document.createElement('h2');
+		id.textContent = item.id
+	
+		var img = document.createElement('img');
+		img.src = item.img
+	
+		var text = document.createElement('h2');
+		text.textContent = item.name
+	
+		var weighte = document.createElement('b');
+		weighte.textContent = `${item.weight}`
+	
+		var nam = document.createElement('a')
+		nam.textContent = item.type
+	
+		// var sellekt = new Set(item.type)
+	
+		
+	
+		// console.log(item.type);
+		
+		
+	
+		newArres.appendChild(id)
+		newArres.appendChild(img)
+		newArres.appendChild(text)
+		newArres.appendChild(weighte)
+		newArres.appendChild(nam)
+		// newArres.appendChild(taype)
+	
+	
+	
+	
+		elList.appendChild(newArres)
+	}
+
+	
+})
+
+var news = []
+pokemons.forEach((poc)=>{
+
+	for(i of poc.type){
+		news.push(i)
+	}
+	var set = new Set(news)
+	
+	
+	var eloptions = document.createElement('option')
+	eloptions.setAttribute("value",set)
+	eloptions.value = set
+	eloptions.textContent = newse
+	elSelect.appendChild(eloptions)
+	// console.log(set);
+	
+	})
+
+
+
