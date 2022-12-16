@@ -3585,13 +3585,25 @@ elSelect.addEventListener('change',function(){
 	elList.innerHTML = []
 
 
+	if(elSelect.value == "All"){
+		newarreys = pokemons
+	}
+
+
 
 	pokemons.forEach((poc)=>{
+	poc.type.forEach((poctype) =>{
+
+if( elSelect.value == poctype)
+
+newarreys.push(poc)
+
+	})
 		
 		
-		if(poc.type.includes(elSelect.value)){
-			newarreys.push(poc)
-		}
+		// if(poc.type.includes(elSelect.value)){
+		// 	newarreys.push(poc)
+		// }
 		// if(poc.type.includes() != All){
 		// 	newarreys.push(pokemons)
 		// }
