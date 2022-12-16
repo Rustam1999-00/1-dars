@@ -3487,28 +3487,6 @@ var elSelect = document.querySelector('.js-select');
 
 for (item of pokemons) {
 
-	var setteng = []
-
-	item.type.forEach(function(el,indext){
-		setteng.push(el);
-
-		var setng = new Set(setteng);
-
-
-		var newse = []
-
-		for(i of setng){
-			newse.push(i)
-		}
-		
-	})
-		
-	
-	  
-
-	
-	
-
 	var newArres = document.createElement('li');
 
 	newArres.classList.add('card')
@@ -3570,9 +3548,33 @@ for (item of pokemons) {
 }
 
 
+var crite = []
+pokemons.forEach((poc)=>{
+	poc.type.forEach((pocty) =>{
+		crite.push(pocty)
+	})
+
+});
+
+var duplicate = new Set(crite);
+
+duplicate.forEach((el) => {
+
+
+	var eloption = document.createElement('option')
+	 
+	eloption.setAttribute("value", el);
+	eloption.textContent = el
+	elSelect.appendChild(eloption)
+
+console.log(elSelect);
+
+
+})
+
 
 	
-// var set = new Set()
+
 
 
 
@@ -3583,14 +3585,16 @@ elSelect.addEventListener('change',function(){
 	elList.innerHTML = []
 
 
-		
 
 	pokemons.forEach((poc)=>{
-
-
+		
+		
 		if(poc.type.includes(elSelect.value)){
 			newarreys.push(poc)
 		}
+		// if(poc.type.includes() != All){
+		// 	newarreys.push(pokemons)
+		// }
 		
 	})
 
@@ -3659,24 +3663,6 @@ elSelect.addEventListener('change',function(){
 
 	
 })
-
-var news = []
-pokemons.forEach((poc)=>{
-
-	for(i of poc.type){
-		news.push(i)
-	}
-	var set = new Set(news)
-	
-	
-	var eloptions = document.createElement('option')
-	eloptions.setAttribute("value",set)
-	eloptions.value = set
-	eloptions.textContent = newse
-	elSelect.appendChild(eloptions)
-	// console.log(set);
-	
-	})
 
 
 
