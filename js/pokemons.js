@@ -3482,10 +3482,111 @@ var pokemons = [
 var elText = document.querySelector('.js-text');
 var elList = document.querySelector('.js-list');
 var elSelect = document.querySelector('.js-select');
+var elSelect2 = document.querySelector('.js-select2');
+var elForm = document.querySelector('.js-form');
+var elInput = document.querySelector('.js-input');
 
 
 
 for (item of pokemons) {
+
+	var newArres = document.createElement('li');
+
+	newArres.classList.add('card')
+	newArres.classList.add('d-flex')
+
+	newArres.classList.add('text-center')
+	newArres.classList.add('bg-info')
+	newArres.classList.add('col-lg-3')
+
+	newArres.classList.add('col-md-4')
+	newArres.classList.add('col-sm-5')
+
+	newArres.classList.add('p-5')
+	newArres.classList.add('mb-5')
+	newArres.classList.add('ms-1')
+	newArres.classList.add('border')
+	newArres.classList.add('border-dark')
+	newArres.classList.add('hover')
+
+
+
+
+
+
+	var id = document.createElement('h2');
+	id.textContent = item.id
+
+
+	var img = document.createElement('img');
+	img.src = item.img
+
+	var text = document.createElement('h2');
+	text.textContent = item.name
+
+	var weighte = document.createElement('b');
+	weighte.textContent = `${item.weight}`
+
+	var nam = document.createElement('a')
+	nam.textContent = item.type
+
+
+	newArres.appendChild(id)
+	newArres.appendChild(img)
+	newArres.appendChild(text)
+	newArres.appendChild(weighte)
+	newArres.appendChild(nam)
+
+
+
+
+
+	elList.appendChild(newArres)
+}
+
+
+var crite = []
+pokemons.forEach((poc)=>{
+	poc.type.forEach((pocty) =>{
+		crite.push(pocty)
+	})
+
+});
+
+var duplicate = new Set(crite);
+
+duplicate.forEach((el) => {
+
+
+	var eloption = document.createElement('option')
+	 
+	eloption.setAttribute("value", el);
+	eloption.textContent = el
+	elSelect.appendChild(eloption)
+
+
+
+
+})
+
+// ------------------------------------------------------------------
+
+var input = []
+
+elForm.addEventListener('input',function () {
+	input= []
+	elList.innerHTML = ""
+
+	var inputVal = elInput.value.toLocaleLowerCase();
+
+pokemons.forEach((seorch)=>{
+	if(seorch.name.toLocaleLowerCase().includes(inputVal) ){
+
+		input.push(seorch)
+
+	}
+})
+for (item of input) {
 
 	var newArres = document.createElement('li');
 
@@ -3547,37 +3648,17 @@ for (item of pokemons) {
 	elList.appendChild(newArres)
 }
 
-
-var crite = []
-pokemons.forEach((poc)=>{
-	poc.type.forEach((pocty) =>{
-		crite.push(pocty)
-	})
-
-});
-
-var duplicate = new Set(crite);
-
-duplicate.forEach((el) => {
-
-
-	var eloption = document.createElement('option')
-	 
-	eloption.setAttribute("value", el);
-	eloption.textContent = el
-	elSelect.appendChild(eloption)
-
-console.log(elSelect);
-
-
 })
+
+
+
 
 
 	
 
 
 
-
+// -------------------------------------------------------------
 newarreys = []
 
 elSelect.addEventListener('change',function(){
@@ -3600,13 +3681,7 @@ newarreys.push(poc)
 
 	})
 		
-		
-		// if(poc.type.includes(elSelect.value)){
-		// 	newarreys.push(poc)
-		// }
-		// if(poc.type.includes() != All){
-		// 	newarreys.push(pokemons)
-		// }
+
 		
 	})
 
@@ -3676,5 +3751,102 @@ newarreys.push(poc)
 	
 })
 
+// Sort
 
+var newsorte = []
+
+elSelect2.addEventListener('change',function(){
+	newsorte = []
+	elList.innerHTML = ''
+
+pokemons.forEach((els)=>{
+	newsorte.push(els)
+	newsorte.sort((a,b)=> 
+	a.name.toLocaleLowerCase().charCodeAt(0) - 
+	b.name.toLocaleLowerCase().charCodeAt(0))
+
+})
+
+if(elSelect2.value == 'a-z'){
+
+	newsorte.sort((a,b)=> 
+	a.name.toLocaleLowerCase().charCodeAt(0) - 
+	b.name.toLocaleLowerCase().charCodeAt(0))
+
+}
+
+if(elSelect2.value == 'z-a'){
+	
+	newsorte.sort((a,b)=>
+	b.name.toLocaleLowerCase().charCodeAt(0) - 
+	a.name.toLocaleLowerCase().charCodeAt(0))
+
+}
+console.log(newsorte);
+
+for (item of newsorte) {
+
+	var newArres = document.createElement('li');
+
+	newArres.classList.add('card')
+	newArres.classList.add('d-flex')
+	// newArres.classList.add('w-25')
+	newArres.classList.add('text-center')
+	newArres.classList.add('bg-info')
+	newArres.classList.add('col-lg-3')
+
+	newArres.classList.add('col-md-4')
+	newArres.classList.add('col-sm-5')
+
+	newArres.classList.add('p-5')
+	newArres.classList.add('mb-5')
+	newArres.classList.add('ms-1')
+	newArres.classList.add('border')
+	newArres.classList.add('border-dark')
+	newArres.classList.add('hover')
+
+
+
+
+
+
+	var id = document.createElement('h2');
+	id.textContent = item.id
+
+	var img = document.createElement('img');
+	img.src = item.img
+
+	var text = document.createElement('h2');
+	text.textContent = item.name
+
+	var weighte = document.createElement('b');
+	weighte.textContent = `${item.weight}`
+
+	var nam = document.createElement('a')
+	nam.textContent = item.type
+
+	// var sellekt = new Set(item.type)
+
+	
+
+	// console.log(item.type);
+	
+	
+
+	newArres.appendChild(id)
+	newArres.appendChild(img)
+	newArres.appendChild(text)
+	newArres.appendChild(weighte)
+	newArres.appendChild(nam)
+	// newArres.appendChild(taype)
+
+
+
+
+	elList.appendChild(newArres)
+}
+
+console.log(item);
+
+});
 
